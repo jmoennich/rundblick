@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/main.css"/>
+    <script src="js/angular/angular.min.js"></script>
+    <script src="js/angular/angular-touch.min.js"></script>
+    <script src="js/rundblickApp.js"></script>
+    <script src="js/rundblickControllers.js"></script>
+    <script src="js/graphServices.js"></script>
+</head>
+<body ng-app="rundblickApp" ng-controller="rundblickController">
+
+<div class="viewport-container">
+    <div class="viewport" ng-swipe-left="swipeLeft($event)" ng-swipe-right="swipeRight($event)">
+        <div class="images" ng-style="{'-webkit-transform': 'translateZ(-'+tz+'px) rotateY('+deg+'deg)'}">
+            <img ng-repeat="photo in photos track by $index"
+                 ng-src="{{photo.source}}"
+                 ng-style="{'-webkit-transform': 'rotateY('+($index * ty)+'deg) translateZ('+tz+'px)'}"
+                 ng-click="goTo($index)">
+        </div>
+    </div>
+    <div class="info" ng-show="selected.photo">
+        <p>{{selected.photo.name}}</p>
+
+        <p><b>{{selected.photo.likes.summary.total_count}}</b> Likes</p>
+    </div>
+</div>
+
+<div class="nav" ng-show="pages">
+    <div class="distance">
+        <input type="range" min="100" max="1000" ng-model="distance" ng-mouseup="loadPages()">
+        {{distance}} Meter
+    </div>
+    <ul>
+        <li ng-repeat="page in pages | orderBy:'name'">
+            <a href="#" ng-bind="page.name" ng-click="openPage(page)" ng-class="{selected: selected.page == page}"></a>
+            <ul ng-if="selected.page == page">
+                <li ng-repeat="album in albums">
+                    <a href="#" ng-bind="album.name" ng-click="openAlbum(album)"
+                       ng-class="{selected: selected.album == album}"></a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div ng-show="loading" class="loading"></div>
+
+<div class="geoError" ng-show="geoError">
+    Cannot get your location :(<br>
+    Disabled Wi-Fi?
+</div>
+
+</body>
+</html>

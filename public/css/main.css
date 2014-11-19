@@ -1,0 +1,105 @@
+
+body {
+    font-family: "Helvetica Neue", Helvetica;
+    font-weight: lighter;
+    font-size: 11pt;
+    background-color: #000;
+    color: #eee;
+}
+
+.nav {
+    background-color: #222;
+    position:absolute;
+    padding:3px;
+    top:0px;
+    left:0px;
+    width:250px;
+    height:100%;
+    overflow-y: auto;
+}
+
+.nav a {
+    display: block;
+    color: #eee;
+    text-decoration: none;
+}
+
+.nav a.selected {
+    background-color: #eee;
+    color: #000;
+}
+
+.viewport-container {
+    position: absolute;
+    left:256px;
+    top:0px;
+    right:0px;
+    bottom:0px;
+}
+
+.viewport {
+    width: 250px;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    -webkit-backface-visibility: hidden;
+    margin: 100px auto 0px auto;
+}
+
+.images {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transition: transform;
+    transition-duration: 1s;
+    /*transition-timing-function: ease-out;*/
+}
+
+img {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    left: 0px;
+    top: 75px;
+    -webkit-user-drag: none;
+}
+
+.info {
+    color: #eee;
+    background-color: #000;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+.loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -8px;
+    margin-left: -8px;
+    width: 16px;
+    height: 16px;
+    background: url(../img/ajax-loader.gif) no-repeat;
+}
+
+.geoError {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    margin-left:-125px;
+    margin-top:-35px;
+    width:250px;
+    height: 70px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 2.0;
+}
+
+ul {
+    padding-left: 0px;
+}
+
+ul li ul {
+    padding-left: 15px;
+}
