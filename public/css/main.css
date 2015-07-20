@@ -1,37 +1,76 @@
 
+html {
+    height: 100%;
+}
+
 body {
     font-family: "Helvetica Neue", Helvetica;
-    font-weight: lighter;
-    font-size: 11pt;
-    background-color: #000;
-    color: #eee;
+    font-weight: normal;
+    font-size: 10pt;
+    background-color: #1a1a1a;
+    background: linear-gradient(#000, #222);
 }
 
 .nav {
-    background-color: #222;
+    background-color: #e8ebf0;
     position:absolute;
     padding:3px;
     top:0px;
     left:0px;
-    width:250px;
+    width:350px;
     height:100%;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .nav a {
-    display: block;
-    color: #eee;
+    color: #676a6d;
     text-decoration: none;
+    padding: 1px 5px;
 }
 
 .nav a.selected {
-    background-color: #eee;
-    color: #000;
+    background-color: #0063cd;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.distance {
+    margin: 10px 10px;
+    display: table-cell;
+    vertical-align: middle;
+    height: 50px;
+}
+
+.distance label {
+    float:left;
+    padding-left:10px;
+}
+
+.distance input {
+    float:left;
+    margin-left:10px;
+}
+
+.arrow {
+    width:20px;
+    height:20px;
+    display: inline-block;
+    background: url(../img/arrow_right_16.png) no-repeat center center;
+    transition: transform 0.1s;
+    -webkit-transition: transform 0.1s;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.arrow.open {
+    transform: rotateZ(90deg);
+    -webkit-transform: rotateZ(90deg);
 }
 
 .viewport-container {
     position: absolute;
-    left:256px;
+    left:350px;
     top:0px;
     right:0px;
     bottom:0px;
@@ -63,13 +102,12 @@ img {
 }
 
 .info {
-    color: #eee;
-    background-color: #000;
     position: absolute;
     left: 0px;
     bottom: 0px;
     width: 100%;
     text-align: center;
+    color: #fff;
 }
 
 .loading {
@@ -97,9 +135,15 @@ img {
 }
 
 ul {
-    padding-left: 0px;
+    padding:2px;
+    margin:0px;
+}
+
+li {
+    list-style-type: none;
+    line-height:20px;
 }
 
 ul li ul {
-    padding-left: 15px;
+    margin-left: 30px;
 }

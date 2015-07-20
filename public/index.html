@@ -28,12 +28,16 @@
 
 <div class="nav" ng-show="pages">
     <div class="distance">
-        <input type="range" min="100" max="1000" ng-model="distance" ng-mouseup="loadPages()">
-        {{distance}} Meter
+        <label for="distance">Umkreis von</label>
+        <input id="distance" type="range" min="100" max="1000" ng-model="distance" ng-mouseup="loadPages()">
+        <label>{{distance}} Meter</label>
     </div>
     <ul>
         <li ng-repeat="page in pages | orderBy:'name'">
-            <a href="#" ng-bind="page.name" ng-click="openPage(page)" ng-class="{selected: selected.page == page}"></a>
+            <a href="" ng-click="openPage(page)">
+              <span class="arrow" ng-class="{open: selected.page == page}"></span>
+              <span ng-bind="page.name"></span>
+            </a>
             <ul ng-if="selected.page == page">
                 <li ng-repeat="album in albums">
                     <a href="#" ng-bind="album.name" ng-click="openAlbum(album)"
